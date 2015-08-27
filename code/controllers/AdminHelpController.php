@@ -42,6 +42,8 @@ class AdminHelpController extends LeftAndMain implements PermissionProvider
 	}
 
 	public static function help_link($uid) {
-		return Controller::join_links('/admin/admin-help/show/help', AdminHelp::by_uid($uid)->ID);
+		$obj = AdminHelp::by_uid($uid);
+		$id = $obj ? $obj->ID : '';
+		return Controller::join_links('/admin/admin-help/show/help', $id);
 	}
 }
